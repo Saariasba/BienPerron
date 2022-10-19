@@ -1,7 +1,8 @@
-package com.example.bienperron
+package com.example.bienperron.ui.activities
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.example.bienperron.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
