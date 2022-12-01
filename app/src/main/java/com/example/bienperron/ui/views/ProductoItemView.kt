@@ -13,6 +13,7 @@ import com.example.bienperron.listeners.ProductosListener
 import com.example.bienperron.listeners.TiendasListener
 import com.example.bienperron.model.Producto
 import com.example.bienperron.model.Tienda
+import com.example.bienperron.utils.toCurrencyString
 import com.squareup.picasso.Picasso
 
 
@@ -25,6 +26,8 @@ class ProductoItemView @JvmOverloads constructor(
 ) : ConstraintLayout(context, attrs, defStyleAttr) {
 
     private val tienda by lazy<TextView> { findViewById(R.id.tienda) }
+    private val descripcion by lazy<TextView> { findViewById(R.id.descripcion) }
+    private val precio by lazy<TextView> { findViewById(R.id.precio) }
     private val image by lazy<ImageView> { findViewById(R.id.image) }
     val animationScale = AnimationUtils.loadAnimation(context, R.anim.button_choice_small)
     private var listener: ProductosListener? = null
@@ -32,7 +35,7 @@ class ProductoItemView @JvmOverloads constructor(
     private lateinit var data: Producto
 
     init {
-        View.inflate(context, R.layout.tema_list_item, this)
+        View.inflate(context, R.layout.producto_list_item, this)
         listeners()
     }
 
@@ -56,6 +59,8 @@ class ProductoItemView @JvmOverloads constructor(
     @AfterPropsSet
     fun setText() {
         tienda.text = data.nombre
+        descripcion.text = data.descripcion
+        precio.text = data.precio.toCurrencyString()
         Picasso
             .with(context)
             .load(data.image)

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -24,6 +25,7 @@ class ProductosActivity : AppCompatActivity() {
 
     private val recyclerView by lazy<RecyclerView> { findViewById(R.id.list_of_productos) }
     private val tiendaNombre by lazy<TextView> { findViewById(R.id.tittle_tienda) }
+    private val maps by lazy<Button> { findViewById(R.id.maps) }
 
     lateinit var shimmerFrameLayout: ShimmerFrameLayout
 
@@ -33,12 +35,8 @@ class ProductosActivity : AppCompatActivity() {
         ProductosAdapterController(
             object : ProductosListener {
                 override fun goToProducto(producto: Producto) {
-                    /*val intent = Intent(
-                        Intent.ACTION_VIEW,
-                        Uri.parse("geo:<${tienda.latitud}>,<${tienda.longitud}>?q=<${tienda.latitud}>,<${tienda.longitud}>(Label+Name)")
-                    )
-                    startActivity(intent)*/
-                    val msj = "Hola ${tienda.nombre}, me envía BienPerrón ya que es estoy interesado en ${producto.nombre},¿me puedes ayudar?"
+                    val msj =
+                        "Hola ${tienda.nombre}, me envía BienPerrón ya que es estoy interesado en ${producto.nombre},¿me puedes ayudar?"
                     val intent = Intent(Intent.ACTION_VIEW)
                     val uri = "whatsapp://send?phone=${tienda.telefono}&text=$msj"
                     intent.data = Uri.parse(uri)
@@ -56,6 +54,8 @@ class ProductosActivity : AppCompatActivity() {
             id = intent.getStringExtra("Tienda_Id").toString(),
             nombre = intent.getStringExtra("Tienda_Nombre"),
             telefono = intent.getStringExtra("Tienda_Telefono"),
+            latitud = intent.getDoubleExtra("Tienda_Latitud", 0.0),
+            longitud = intent.getDoubleExtra("Tienda_Longitud", 0.0),
         )
         tiendaNombre.text = tienda.nombre
         init()
@@ -93,5 +93,12 @@ class ProductosActivity : AppCompatActivity() {
         shimmerFrameLayout = findViewById(R.id.shimmerLayout);
         recyclerView.layoutManager = GridLayoutManager(applicationContext, 1)
         recyclerView.adapter = adapterController.adapter
+        maps.setOnClickListener {
+            val intent = Intent(
+                Intent.ACTION_VIEW,
+                Uri.parse("geo:<${tienda.latitud}>,<${tienda.longitud}>?q=<${tienda.latitud}>,<${tienda.longitud}>(Label+Name)")
+            )
+            startActivity(intent)
+        }
     }
 }

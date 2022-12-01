@@ -43,6 +43,8 @@ class HomeActivity : AppCompatActivity() {
                     intent.putExtra("Tienda_Id", tienda.id)
                     intent.putExtra("Tienda_Nombre", tienda.nombre)
                     intent.putExtra("Tienda_Telefono", tienda.telefono)
+                    intent.putExtra("Tienda_Latitud", tienda.latitud)
+                    intent.putExtra("Tienda_Longitud", tienda.longitud)
                     startActivity(intent)
                 }
             },
@@ -59,7 +61,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun busqueda(){
         db.collection("Tiendas")
-            .orderBy("nombre")
+            .orderBy("orden")
             .get()
             .addOnSuccessListener { documents ->
                 val listTiendas = mutableListOf<Tienda>()
