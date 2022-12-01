@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="primary_bien_perron">#5271FF</color>
     <color name="secondary_bien_perron">#8338EC</color>
+    <color name="secondary_gray">#A6A6A6</color>
 </resources>

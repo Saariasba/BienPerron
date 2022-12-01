@@ -6,5 +6,6 @@ data class Tienda(
     val image: String? = "",
     val latitud: Double? = 0.0,
     val longitud: Double? = 0.0,
-    val telefono: String? = ""
+    val telefono: String? = "",
+    val orden: Int? = 0
 )
