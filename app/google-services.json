@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "670461479238",
+    "project_id": "bien-perron",
+    "storage_bucket": "bien-perron.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:670461479238:android:5389926bee22104bc9bd47",
+        "android_client_info": {
+          "package_name": "com.example.bienperron"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "670461479238-2h1i5qbs21u8rk81daqo02khktru4dc1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGEvc8Rgcb6TlO1wszcJl0ZK_ZFnp9jR0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "670461479238-2h1i5qbs21u8rk81daqo02khktru4dc1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
